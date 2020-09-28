@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+set -e
+PATH="/usr/local/bin:$PATH"
+trap 'rm -f "$$.tags"' EXIT
+ctags --tag-relative --verbose -f"$$.tags" --languages=rust --exclude=target --recurse .
+mv "$$.tags" "tags"
