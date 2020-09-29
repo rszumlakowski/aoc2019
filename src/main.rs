@@ -21,12 +21,12 @@ fn config_ok(args: &Vec<String>, config: Config) {
                 println!("{}", days::day01::calc_part_b(&input));
             } 
         },
-        Err(e) => print_err(&args, &e)
+        Err(e) => print_err(&args, e)
     }
 }
 
-fn print_err(args: &Vec<String>, error: &str) {
-    usage(args, error)
+fn print_err(args: &Vec<String>, error: String) {
+    usage(args, &error)
         .into_iter()
         .for_each(|line| println!("{}", line));
 }

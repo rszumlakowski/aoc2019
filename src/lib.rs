@@ -5,16 +5,16 @@ pub struct Config {
 }
 
 impl Config {
-    pub fn new(args: &Vec<String>) -> Result<Config, &str> {
+    pub fn new(args: &Vec<String>) -> Result<Config, String> {
         let day = Config::parse_day(args)?;
         Ok(Config{day})
     }
 
-    fn parse_day(args: &Vec<String>) -> Result<i64, &str> {
+    fn parse_day(args: &Vec<String>) -> Result<i64, String> {
         args.get(1)
             .ok_or("No day number provided")?
             .parse::<i64>()
-            .map_err(|_| "Could not parse day number as i64")
+            .map_err(|_| "Could not parse day number as i64".to_string())
     }
 }
 
